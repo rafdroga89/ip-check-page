@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon IP publique</title>
+</head>
+<body style="text-align:center; margin-top:20%">
+  <h1>Ton IP publique est :</h1>
+  <h2 id="ip">Chargement...</h2>
+
+  <script>
+    fetch('https://ipapi.co/json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('ip').innerText = data.ip + " (" + data.country_name + ")";
+      })
+      .catch(() => {
+        document.getElementById('ip').innerText = "Erreur de chargement";
+      });
+  </script>
+</body>
+</html>
